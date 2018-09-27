@@ -1,0 +1,73 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Team 117 Storefront</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-pink.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+
+<body style="background-color:ghostwhite">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header mdl-layout__header--waterfall portfolio-header">
+            <div class="mdl-layout__header-row portfolio-logo-row">
+                <span class="mdl-layout__title">
+                    <div class="portfolio-logo"></div>
+                    <span class="mdl-layout__title">For the Love of the Games</span>
+                </span>
+            </div>
+
+            <% if (HttpContext.Current.User.Identity.IsAuthenticated) { %>
+
+            <div class="mdl-layout__header-row portfolio-navigation-row mdl-layout--large-screen-only">
+                <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
+                    <asp:HyperLink ID="HyperLink3" runat="server" Class="mdl-navigation__link" NavigateUrl="~/home.aspx" >Search</asp:HyperLink>
+                    <asp:HyperLink ID="HyperLink5" runat="server" CssClass="mdl-navigation__link" NavigateUrl="~/contact.aspx">Contact</asp:HyperLink>
+                    <asp:HyperLink ID="HyperLink6" runat="server" CssClass="mdl-navigation__link" NavigateUrl="~/ShoppingCart.aspx">Cart</asp:HyperLink>
+                    <asp:HyperLink ID="HyperLink4" runat="server" class="mdl-navigation__link" NavigateUrl="~/Secure/profile.aspx">Profile</asp:HyperLink>
+                    <asp:HyperLink ID="HyperLink7" runat="server" CssClass="mdl-navigation__link" NavigateUrl="~/Secure/history.aspx">Order History</asp:HyperLink>
+                    <asp:HyperLink ID="HyperLink8" runat="server" CssClass="mdl-navigation__link" NavigateUrl="~/Secure/signout.aspx">Sign Out</asp:HyperLink>
+                    </nav>
+            </div>
+
+               <%  } else { %>
+
+              <div class="mdl-layout__header-row portfolio-navigation-row mdl-layout--large-screen-only">
+                <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
+                    <asp:HyperLink ID="HyperLink1" runat="server" class="mdl-navigation__link" NavigateUrl="~/home.aspx">Search</asp:HyperLink>
+                    <asp:HyperLink ID="HyperLink2" runat="server" class="mdl-navigation__link" NavigateUrl="~/contact.aspx">Contact</asp:HyperLink>
+                    <asp:HyperLink ID="HyperLink9" runat="server" CssClass="mdl-navigation__link" NavigateUrl="~/ShoppingCart.aspx">Cart</asp:HyperLink>
+                    <asp:HyperLink ID="HyperLink10" runat="server" CssClass="mdl-navigation__link" NavigateUrl="~/login.aspx">Log In / Register</asp:HyperLink>
+                    </nav>
+            </div>
+
+                <% }  %>
+
+            
+        </header>
+      
+    <div>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+    </div>        
+ 
+        
+    <footer class="mdl-mini-footer">
+        <div class="mdl-mini-footer__left-section">
+            <div class="mdl-logo">For the Love of the Games</div>
+        </div>
+            <div class="mdl-mini-footer__right-section">
+                <ul class="mdl-mini-footer__link-list">
+                    <li>
+                        <asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl="~/contact.aspx">Help</asp:HyperLink>
+                        </li>
+                </ul>
+            </div>
+     </footer>       
+    </div>
+</body>
+</html>
